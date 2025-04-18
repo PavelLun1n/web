@@ -7,103 +7,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лабораторная работа №4 - Работа с файлами и сессиями</title>
-    <style>
-        :root {
-            --primary-color: #4a6da7;
-            --secondary-color: #5d93bb;
-            --accent-color: #f0ad4e;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --border-color: #ddd;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
-
+      <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1200px;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
-            color: var(--text-color);
-            line-height: 1.6;
+            max-width: 1000px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         h1 {
-            color: var(--primary-color);
-            font-size: 2.2rem;
+            font-size: 24px;
             margin-bottom: 10px;
         }
 
         .subtitle {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 16px;
+            color: #555;
         }
 
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: var(--primary-color);
             text-decoration: none;
-            font-weight: bold;
+            color: #003366;
         }
 
         .back-link:hover {
             text-decoration: underline;
         }
 
-        .section-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            margin-bottom: 30px;
+        .pattern-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
-        .section-title {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-top: 0;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
+        .pattern-card {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 15px;
         }
 
-        .description {
-            margin-bottom: 30px;
-        }
-
-        .demo-link {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+        .pattern-header {
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
         }
 
-        .demo-link:hover {
-            background-color: #e09a3c;
+        .pattern-description p {
+            margin: 5px 0;
+        }
+
+        .pattern-links {
+            margin-top: 15px;
+        }
+
+        .pattern-link {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 6px 12px;
+            background-color: #003366;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .pattern-link:hover {
+            background-color: #005599;
         }
 
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: #666;
-        }
-        
-        .diagram-container {
-            margin: 30px 0;
-            text-align: center;
+            margin-top: 50px;
+            padding-top: 10px;
+            font-size: 13px;
+            color: #888;
+            border-top: 1px solid #ccc;
         }
     </style>
 </head>
@@ -124,12 +112,7 @@
         <a href="./news/news.php" class="demo-link" target="_blank">Перейти к новостной системе</a>
     </div>
 
-    <div class="section-container">
-        <h2 class="section-title">Диаграмма классов</h2>
-        <div class="diagram-container">
-            <img src="news/images/NewsSystem.png" alt="Диаграмма классов новостной системы" style="max-width: 100%; margin: 0 auto; display: block;">
-        </div>
-    </div>
+    
 
     <div class="footer">
         <p>PHP Student Project &copy; <?php echo date('Y'); ?>. Все права защищены.</p>
