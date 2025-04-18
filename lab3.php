@@ -8,49 +8,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лабораторная работа №3 - Паттерны проектирования</title>
     <style>
-        :root {
-            --primary-color: #4a6da7;
-            --secondary-color: #5d93bb;
-            --accent-color: #f0ad4e;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --border-color: #ddd;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1200px;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
-            color: var(--text-color);
-            line-height: 1.6;
+            max-width: 1000px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         h1 {
-            color: var(--primary-color);
-            font-size: 2.2rem;
+            font-size: 24px;
             margin-bottom: 10px;
         }
 
         .subtitle {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 16px;
+            color: #555;
         }
 
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: var(--primary-color);
             text-decoration: none;
-            font-weight: bold;
+            color: #003366;
         }
 
         .back-link:hover {
@@ -59,75 +45,53 @@
 
         .pattern-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
         .pattern-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pattern-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px var(--shadow-color);
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 15px;
         }
 
         .pattern-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
-            font-size: 1.2rem;
             font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
         }
 
-        .pattern-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pattern-description {
-            margin-bottom: 20px;
-            flex-grow: 1;
+        .pattern-description p {
+            margin: 5px 0;
         }
 
         .pattern-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            margin-top: 15px;
         }
 
         .pattern-link {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
+            margin-right: 10px;
+            padding: 6px 12px;
+            background-color: #003366;
+            color: #ffffff;
             text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            font-size: 14px;
         }
 
         .pattern-link:hover {
-            background-color: #e09a3c;
+            background-color: #005599;
         }
 
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: #666;
+            margin-top: 50px;
+            padding-top: 10px;
+            font-size: 13px;
+            color: #888;
+            border-top: 1px solid #ccc;
         }
     </style>
 </head>
