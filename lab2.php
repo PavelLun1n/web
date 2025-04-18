@@ -8,136 +8,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лабораторная работа №2 - Паттерны проектирования</title>
     <style>
-        :root {
-            --primary-color: #4a6da7;
-            --secondary-color: #5d93bb;
-            --accent-color: #f0ad4e;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --border-color: #ddd;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #34495e;
+        --accent-color: #2980b9;
+        --text-color: #222;
+        --light-bg: #ecf0f1;
+        --border-color: #ccc;
+        --shadow-color: rgba(0, 0, 0, 0.05);
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+        color: var(--text-color);
+        line-height: 1.6;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
 
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
+    h1 {
+        color: var(--primary-color);
+        font-size: 3rem;
+        margin-bottom: 15px;
+        letter-spacing: 2px;
+    }
 
-        .subtitle {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
+    .subtitle {
+        font-size: 1.1rem;
+        color: var(--secondary-color);
+    }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .main-container {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 24px;
+        overflow-x: auto;
+        padding: 0 12px 10px 12px; 
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-color) transparent;
+    }
 
-        .back-link:hover {
-            text-decoration: underline;
-        }
+    .lab-card {
+        flex: 0 0 340px; 
+        background-color: white;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: 0 6px 12px var(--shadow-color);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .section-title {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            margin: 30px 0 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
-        }
+    .lab-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px var(--shadow-color);
+    }
 
-        .pattern-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
+    .lab-header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 18px 20px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-align: center;
+    }
 
-        .pattern-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+    .lab-content {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
-        .pattern-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px var(--shadow-color);
-        }
+    .lab-description {
+        flex-grow: 1;
+    }
 
-        .pattern-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
+    .lab-description p {
+        margin: 10px 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
 
-        .pattern-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
+    .lab-link {
+        margin-top: 15px;
+        display: inline-block;
+        padding: 10px 18px;
+        background-color: var(--accent-color);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
 
-        .pattern-description {
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
+    .lab-link:hover {
+        background-color: #1c6ea4;
+    }
 
-        .pattern-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .section-title {
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        margin: 30px 0 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--border-color);
+    }
 
-        .pattern-link {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
+    .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-        .pattern-link:hover {
-            background-color: #e09a3c;
-        }
+    .back-link:hover {
+        text-decoration: underline;
+    }
 
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: #666;
-        }
-    </style>
+    .footer {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid var(--border-color);
+        color: #888;
+        font-size: 0.9rem;
+    }
+</style>
+
+
 </head>
 <body>
     <header>
