@@ -1,37 +1,3 @@
-<?php
-
-declare(strict_types=1);
-
-// Функция автозагрузки
-spl_autoload_register(function ($class) {
-    $prefix = 'MyProject\\';
-    $base_dir = __DIR__ . '/MyProject/';
-
-    $len = strlen($prefix);
-    if (strncmp($prefix, $class, $len) !== 0) {
-        return;
-    }
-
-    $relative_class = substr($class, $len);
-    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
-
-    if (file_exists($file)) {
-        require $file;
-    }
-});
-
-use MyProject\Classes\User;
-use MyProject\Classes\SuperUser;
-
-// Создание обычных пользователей
-$user1 = new User("John Doe", "john", "password123");
-$user2 = new User("Jane Smith", "jane", "password456");
-$user3 = new User("Bob Wilson", "bob", "password789");
-
-// Создание привилегированного пользователя
-$superUser = new SuperUser("Admin User", "admin", "adminpass", "Administrator");
-
-?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -40,73 +6,73 @@ $superUser = new SuperUser("Admin User", "admin", "adminpass", "Administrator");
     <title>Лабораторные работы по PHP</title>
     <style>
         :root {
-            --primary-color: #4a6da7;
-            --secondary-color: #5d93bb;
-            --accent-color: #f0ad4e;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --border-color: #ddd;
-            --shadow-color: rgba(0, 0, 0, 0.1);
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #2980b9;
+            --text-color: #222;
+            --light-bg: #ecf0f1;
+            --border-color: #ccc;
+            --shadow-color: rgba(0, 0, 0, 0.05);
         }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0;
+            padding: 10px 20px; 
             background-color: #f5f5f5;
             color: var(--text-color);
             line-height: 1.6;
         }
 
+
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         h1 {
             color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
 
         .subtitle {
+            font-size: 1.1rem;
             color: var(--secondary-color);
-            font-size: 1.2rem;
-            margin-bottom: 30px;
         }
 
-        .main-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
+     .main-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 0 12px 10px 12px; 
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
+}
 
-        .lab-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+.lab-card {
+    flex: 0 0 340px; 
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
         .lab-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px var(--shadow-color);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px var(--shadow-color);
         }
 
         .lab-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 15px 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            padding: 18px 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
         }
 
         .lab-content {
@@ -114,47 +80,39 @@ $superUser = new SuperUser("Admin User", "admin", "adminpass", "Administrator");
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
-        .lab-description {
-            margin-bottom: 20px;
-            flex-grow: 1;
+        .lab-description p {
+            margin: 10px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .lab-link {
+            margin-top: 15px;
             display: inline-block;
+            padding: 10px 18px;
             background-color: var(--accent-color);
-            color: white;
+            color: #fff;
             text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 6px;
             text-align: center;
             font-weight: bold;
             transition: background-color 0.3s ease;
-            align-self: flex-start;
         }
 
         .lab-link:hover {
-            background-color: #e09a3c;
-        }
-
-        .completed-badge {
-            display: inline-block;
-            background-color: #28a745;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-left: 10px;
-            vertical-align: middle;
+            background-color: #1c6ea4;
         }
 
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
+            margin-top: 60px;
+            padding-top: 30px;
             border-top: 1px solid var(--border-color);
-            color: #666;
+            color: #888;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -166,9 +124,7 @@ $superUser = new SuperUser("Admin User", "admin", "adminpass", "Administrator");
 
     <div class="main-container">
         <div class="lab-card">
-            <div class="lab-header">
-                Лабораторная работа №1 <span class="completed-badge">Выполнено</span>
-            </div>
+            <div class="lab-header">Лабораторная работа №1</div>
             <div class="lab-content">
                 <div class="lab-description">
                     <p>Система управления пользователями. Реализация классов User и SuperUser с использованием ООП в PHP.</p>
@@ -179,67 +135,33 @@ $superUser = new SuperUser("Admin User", "admin", "adminpass", "Administrator");
         </div>
 
         <div class="lab-card">
-            <div class="lab-header">
-                Лабораторная работа №2 <span class="completed-badge">Выполнено</span>
-            </div>
+            <div class="lab-header">Лабораторная работа №2</div>
             <div class="lab-content">
                 <div class="lab-description">
-                    <p>Паттерны проектирования в PHP. Изучение и реализация популярных паттернов проектирования: порождающих, структурных и поведенческих.</p>
-                    <p>Демонстрация работы каждого паттерна на практических примерах.</p>
+                    <p>Паттерны проектирования в PHP: порождающие, структурные и поведенческие.</p>
+                    <p>Практические примеры реализации.</p>
                 </div>
                 <a href="lab2.php" class="lab-link">Открыть работу</a>
             </div>
         </div>
 
         <div class="lab-card">
-            <div class="lab-header">
-                Лабораторная работа №3 <span class="completed-badge">Выполнено</span>
-            </div>
+            <div class="lab-header">Лабораторная работа №3</div>
             <div class="lab-content">
                 <div class="lab-description">
-                    <p>Паттерн Модель-Представление-Контроллер (MVC). Реализация паттернов проектирования: Одиночка (Singleton), Фабричный метод (Factory Method).</p>
-                    <p>Создание диаграмм классов с использованием PlantUML и реализация MarkdownView.</p>
+                    <p>Реализация MVC, Singleton и Factory Method. Создание диаграмм с PlantUML.</p>
                 </div>
                 <a href="lab3.php" class="lab-link">Открыть работу</a>
             </div>
         </div>
 
         <div class="lab-card">
-            <div class="lab-header">
-                Лабораторная работа №4
-            </div>
+            <div class="lab-header">Лабораторная работа №4</div>
             <div class="lab-content">
                 <div class="lab-description">
-                    <p>Работа с файлами и сессиями. Загрузка и обработка файлов, сохранение состояния между запросами.</p>
-                    <p>Реализация системы хранения пользовательских настроек.</p>
+                    <p>Работа с файлами и сессиями. Хранение пользовательских настроек между запросами.</p>
                 </div>
                 <a href="lab4.php" class="lab-link">Открыть работу</a>
-            </div>
-        </div>
-
-        <div class="lab-card">
-            <div class="lab-header">
-                Лабораторная работа №5
-            </div>
-            <div class="lab-content">
-                <div class="lab-description">
-                    <p>Работа с API и асинхронными запросами. Использование AJAX для создания динамических веб-приложений.</p>
-                    <p>Интеграция с внешними сервисами и обработка JSON-данных.</p>
-                </div>
-                <a href="lab5.php" class="lab-link">Открыть работу</a>
-            </div>
-        </div>
-
-        <div class="lab-card">
-            <div class="lab-header">
-                Лабораторная работа №6
-            </div>
-            <div class="lab-content">
-                <div class="lab-description">
-                    <p>Разработка REST API. Создание и документирование API для взаимодействия с внешними системами.</p>
-                    <p>Реализация механизмов аутентификации и авторизации.</p>
-                </div>
-                <a href="lab6.php" class="lab-link">Открыть работу</a>
             </div>
         </div>
     </div>
