@@ -1,0 +1,3 @@
+2025-04-17 18:25:17: 'users:init' with data '"\/home\/g\/g99607k7\/g99607k7.beget.tech\/public_html\/lab2\/Observer\/RealWorld\/users.csv"'
+2025-04-17 18:25:17: 'users:created' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"c89cc6200b34511dfc36791ebf5ab7a1"}}'
+2025-04-17 18:25:17: 'users:deleted' with data '{"attributes":{"name":"John Smith","email":"john99@example.com","id":"c89cc6200b34511dfc36791ebf5ab7a1"}}'
